@@ -1,38 +1,34 @@
-import fs from "fs";
+import fs, { Dirent } from "fs";
 import path from "path";
-import matter from "gray-matter";
+import { readdir } from "node:fs/promises";
 
 // get post Data
-
-const getPostData = () => {
-  // Assuming your posts directory is directly under the project root
+function getPostSlugs() {
+  //current direcotry joined with app/posts/ to get the beginning of the path to posts files
   const folder = path.join(process.cwd(), "app/posts/");
+  //get the folder name of each blogpost = slug
+  const slugs = fs.readdirSync(folder);
+  console.log(slugs);
+  return slugs;
+}
 
-  try {
-    const files = fs.readdirSync(folder);
-    const markdownPosts = files.map((slug) => `${slug}/page.mdx`);
+async function getPostData() {
+  //retireves slugs from post routes async
+  const postsDirectory = path.join(process.cwd(), "app/posts");
+  const dirents = await readdir(postsDirectory, { withFileTypes: true });
+  const slugs = dirents
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name);
 
-    const posts = markdownPosts.map((mdx) => {
-      const fullPath = path.join(folder, mdx); // Construct the full path
-      const fileContents = fs.readFileSync(fullPath, "utf8");
-      const matterResult = matter(fileContents);
-      return {
-        slug: mdx.replace("/page.mdx", ""),
-        title: matterResult.data.title,
-        snippet: matterResult.data.snippet,
-        date: matterResult.data.date,
-      };
-    });
-    console.log(posts);
-    return posts; // Return the array of post metadata
-  } catch (error) {
-    console.error("Error reading post slugs:", error);
-    return []; // Return an empty array in case of error
-  }
-};
-
-function getMetaData() {
-  const fileContents = fs.readFileSync(`posts/${file}`);
+  //takes slug name and creates dynamic route
+  const posts = await Promise.all(
+    slugs.map(async (slug) => {
+      const { metaData } = await import(`./posts/${slug}/page.mdx`);
+      console.log(metaData);
+      return { slug: slug, ...metaData };
+    })
+  );
+  return posts;
 }
 
 export { getPostData };
