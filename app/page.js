@@ -1,15 +1,13 @@
-import Link from "next/link";
 import { getPostData } from "./lib.js";
-import Blog from "./blog/page.js";
+import Articles from "./articles/page.js";
 
-export default async function Home() {
+export default function Home() {
   //Will same array of file names without .mdx to a variable
-  const postData = await getPostData();
 
   return (
     <>
       <div>
-        <Blog posts={postData}></Blog>
+        <h2>home :)</h2>
       </div>
     </>
   );

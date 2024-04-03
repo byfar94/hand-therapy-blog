@@ -24,10 +24,11 @@ async function getPostData() {
   const posts = await Promise.all(
     slugs.map(async (slug) => {
       const { metaData } = await import(`./posts/${slug}/page.mdx`);
-      console.log(metaData);
       return { slug: slug, ...metaData };
     })
   );
+  //sort posts newest to oldest
+  posts.sort((a, b) => +new Date(b.publishDate) - +new Date(a.publishDate));
   return posts;
 }
 

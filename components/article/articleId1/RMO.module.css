@@ -1,0 +1,12 @@
+/* <----------- digit ---------------> */
+
+.digit {
+  border-radius: 50%;
+  border: 1px black solid;
+}
+
+.active {
+  background-color: lightcoral;
+}
+
+/* <------------ digti ------------> */
