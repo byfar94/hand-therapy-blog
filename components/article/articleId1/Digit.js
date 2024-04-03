@@ -6,7 +6,7 @@ export default function Digit({
   position,
   splintDecoration,
   clickHandler,
-  digitText,
+  digitNum,
 }) {
   return (
     <div
@@ -15,7 +15,8 @@ export default function Digit({
       } ${styles.splintDecoration}`}
       onClick={clickHandler}
     >
-      <p>text</p>
+      <p>{digitNum}</p>
+      <p>{position}</p>
     </div>
   );
 }

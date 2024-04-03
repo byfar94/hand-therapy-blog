@@ -3,6 +3,7 @@
 .digit {
   border-radius: 50%;
   border: 1px black solid;
+  padding: 1rem;
 }
 
 .active {
@@ -10,3 +11,8 @@
 }
 
 /* <------------ digti ------------> */
+
+#hand {
+  display: flex;
+  position: relative;
+}
