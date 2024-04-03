@@ -11,8 +11,8 @@ export default function Digit({
   return (
     <div
       className={`${styles.digit} ${isActive ? styles.active : ""} ${
-        styles.position
-      } ${styles.splintDecoration}`}
+        styles[position]
+      } `}
       onClick={clickHandler}
     >
       <p>{digitNum}</p>

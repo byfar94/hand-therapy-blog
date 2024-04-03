@@ -4,10 +4,20 @@
   border-radius: 50%;
   border: 1px black solid;
   padding: 1rem;
+  height: 5rem;
+  width: 5rem;
 }
 
 .active {
   background-color: lightcoral;
+}
+
+.flexion {
+  transform: translateY(20px);
+}
+
+.extension {
+  transform: translateY(-20px);
 }
 
 /* <------------ digti ------------> */
