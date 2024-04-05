@@ -3,6 +3,7 @@ import styles from "./RMO.module.css";
 import Digit from "./Digit";
 import PositionButton from "./PositionButton";
 import { useState } from "react";
+import { displayRmeD3 } from "./util";
 
 export default function RMO() {
   // initial states of all digits, isActive = true means it is the active digit you are focusing on for the RMO, position can be in neutral, flexion, or extension pertaining to the position of each digits, for RMOs a digit can be within a closed loop, resting on a flat surface of the splint or below the flat surface of a split. The combination of the splint decorations will be the visualization of the splint. It can be a circle, underline, or overline.
@@ -22,6 +23,9 @@ export default function RMO() {
     let newState = [...initialDigitsStates];
     newState[index].isActive = true;
     newState[index].position = activePosition;
+    if (index === 1 && activePosition === "extension") {
+      displayRmeD3(newState, index);
+    }
     setDigitsStates(newState);
   }
 

@@ -8,6 +8,10 @@
   width: 5rem;
 }
 
+.RMODecoration {
+  border: 1px green solid;
+}
+
 .active {
   background-color: lightcoral;
 }
@@ -20,7 +24,15 @@
   transform: translateY(-20px);
 }
 
-/* <------------ digti ------------> */
+.circle {
+  border: 2px blue solid;
+}
+
+.underline {
+  border: 2px blue dotted;
+}
+
+/* <------------ RMO ------------> */
 
 #hand {
   display: flex;
