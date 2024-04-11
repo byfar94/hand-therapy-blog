@@ -3,7 +3,14 @@ import styles from "./RMO.module.css";
 import Digit from "./Digit";
 import PositionButton from "./PositionButton";
 import { useState } from "react";
-import { displayRmeD3 } from "./util";
+import {
+  displayRmeD2,
+  displayRmeD3D4,
+  displayRmeD5,
+  displayRmfD2,
+  displayRmfD3D4,
+  displayRmfD5,
+} from "./util";
 
 export default function RMO() {
   // initial states of all digits, isActive = true means it is the active digit you are focusing on for the RMO, position can be in neutral, flexion, or extension pertaining to the position of each digits, for RMOs a digit can be within a closed loop, resting on a flat surface of the splint or below the flat surface of a split. The combination of the splint decorations will be the visualization of the splint. It can be a circle, underline, or overline.
@@ -23,8 +30,27 @@ export default function RMO() {
     let newState = [...initialDigitsStates];
     newState[index].isActive = true;
     newState[index].position = activePosition;
-    if (index === 1 && activePosition === "extension") {
-      displayRmeD3(newState, index);
+
+    //extension orthosis
+    if (index === 0 && activePosition === "extension") {
+      displayRmeD2(newState, index);
+    }
+    if ((index === 1 || index === 2) && activePosition === "extension") {
+      displayRmeD3D4(newState, index);
+    }
+    if (index === 3 && activePosition === "extension") {
+      displayRmeD5(newState, index);
+    }
+
+    //flexion orthosis
+    if (index === 0 && activePosition === "flexion") {
+      displayRmfD2(newState, index);
+    }
+    if ((index === 1 || index === 2) && activePosition === "flexion") {
+      displayRmfD3D4(newState, index);
+    }
+    if (index === 3 && activePosition === "flexion") {
+      displayRmfD5(newState, index);
     }
     setDigitsStates(newState);
   }
@@ -39,12 +65,16 @@ export default function RMO() {
     }
     setActivePosition(newPosition);
 
-    const newState = digitsStates.map((digit) => {
+    /*
+    let  newState = digitsStates.map((digit) => {
       if (digit.isActive) {
         return { ...digit, position: newPosition };
       }
       return digit;
     });
+*/
+
+    let newState = initialDigitsStates;
     setDigitsStates(newState);
   }
 
@@ -54,8 +84,8 @@ export default function RMO() {
         <div id={styles.hand}>
           {digitsStates.map((state, index) => (
             <Digit
-              key={index + 2}
-              digitNum={index + 2}
+              key={index}
+              digitNum={`D${index + 2}`}
               isActive={state.isActive}
               position={state.position}
               splintDecoration={state.splintDecoration}

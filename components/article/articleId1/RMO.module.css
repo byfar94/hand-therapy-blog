@@ -1,15 +1,23 @@
 /* <----------- digit ---------------> */
 
+.digit-contain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .digit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  align-items: center;
   border-radius: 50%;
   border: 1px black solid;
   padding: 1rem;
   height: 5rem;
   width: 5rem;
-}
-
-.RMODecoration {
-  border: 1px green solid;
+  position: relative;
 }
 
 .active {
@@ -25,16 +33,45 @@
 }
 
 .circle {
-  border: 2px blue solid;
+  border: 5px blue solid;
 }
 
 .underline {
-  border: 2px blue dotted;
+  bottom: -5px;
+}
+
+.overline {
+  top: -5px;
+}
+
+.lineRMO {
+  width: 135%;
+  height: 5px;
+  background-color: blue;
+  position: absolute;
+  z-index: -10;
 }
 
 /* <------------ RMO ------------> */
 
+#RMOContainer {
+  border: black;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  border: 1px black solid;
+  width: 50%;
+  height: 15rem;
+}
+
 #hand {
   display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
+}
+
+.btn {
+  width: 5rem;
 }
