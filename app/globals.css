@@ -108,3 +108,16 @@ a {
 #footer {
   justify-self: flex-end;
 }
+
+/* <--------- Article Template ---------> */
+.articlePage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.articleContain {
+  max-width: 50rem;
+  display: flex;
+  flex-direction: column;
+}
