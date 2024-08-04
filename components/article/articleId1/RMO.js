@@ -81,6 +81,24 @@ export default function RMO() {
   return (
     <>
       <section id={styles.RMOContainer}>
+        <div
+          className={styles.RMOContainerPositionReference}
+          id={styles.dorsal}
+        >
+          <p>Dorsal</p>
+        </div>
+        <div className={styles.RMOContainerPositionReference} id={styles.volar}>
+          <p>Volar</p>
+        </div>
+        <div
+          className={styles.RMOContainerPositionReference}
+          id={styles.radial}
+        >
+          <p>R</p>
+        </div>
+        <div className={styles.RMOContainerPositionReference} id={styles.ulnar}>
+          <p>U</p>
+        </div>
         <div id={styles.hand}>
           {digitsStates.map((state, index) => (
             <Digit

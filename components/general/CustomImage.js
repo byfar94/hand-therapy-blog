@@ -7,7 +7,7 @@ const CustomImage = ({ src, alt, width, height }) => {
       alt={alt}
       width={width}
       height={height}
-      layout="responsive"
+      layout="intrinsic"
     />
   );
 };

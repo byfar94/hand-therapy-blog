@@ -56,12 +56,13 @@
 
 #RMOContainer {
   border: black;
+  position: relative;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
   border: 1px black solid;
-  width: 50%;
+  width: 22rem;
   height: 15rem;
 }
 
@@ -74,4 +75,32 @@
 
 .btn {
   width: 5rem;
+}
+
+.RMOContainerPositionReference {
+  position: absolute;
+}
+
+#dorsal {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#volar {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#radial {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+#ulnar {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
 }
