@@ -1,0 +1,17 @@
+{
+  "rmoDiagnosesData": {
+    "extensorTendonRepair": {
+      "category": "RME",
+      "fabrication": "Keep the affected MCP joint in 15-20 degrees of relative extension",
+      "adjacentTreatment": "wrist splint keeping wrist in 20-25 degrees of extension"
+    },
+    "acuteSagittalBandInjury": {
+      "category": "RME",
+      "fabrication": "Fabrication tip for acute-sagittal-band-injury"
+    },
+    "boutonniereDeformity": {
+      "category": "RMF",
+      "fabrication": "Fabrication tip for boutonniere-deformity"
+    }
+  }
+}
